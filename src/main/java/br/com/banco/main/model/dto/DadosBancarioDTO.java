@@ -11,8 +11,8 @@ public class DadosBancarioDTO {
 
 
     public DadosBancarioDTO(DadosBancario dadosBancario) {
-        this.agencia = formaDadosConta(dadosBancario.getAgencia());
-        this.contaCorrente = formaDadosConta(dadosBancario.getContaCorrente());
+        this.agencia = formataDadosConta(dadosBancario.getAgencia());
+        this.contaCorrente = formataDadosConta(dadosBancario.getContaCorrente());
     }
 
 
@@ -21,8 +21,8 @@ public class DadosBancarioDTO {
     }
 
 
-    private String formaDadosConta(Integer id) {
-        return "" + id/10 + "-" + Math.abs(id%10);
+    private String formataDadosConta(Integer id) {
+        return id/10 + "-" + Math.abs(id%10);
     }
 
     

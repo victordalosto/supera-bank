@@ -15,7 +15,7 @@ import br.com.banco.main.repository.DadosBancariosRepository;
 
 @RestController
 @RequestMapping("/api/usuario")
-public class DadosUsuario {
+public class UsuarioRestController {
 
     @Autowired
     DadosBancariosRepository dadosBancariosRepository;
@@ -25,7 +25,7 @@ public class DadosUsuario {
     public ResponseEntity<DadosBancarioDTO> obtemExtratoBancarioPorId(@PathVariable Integer id) {
         Optional<DadosBancario> optDadosBancario = dadosBancariosRepository.findById(id);
         if (optDadosBancario.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: " + id + " nao pode ser encontrado.");
         return ResponseEntity.ok().body(DadosBancarioDTO.converterEmDTO(optDadosBancario.get()));
     }
     

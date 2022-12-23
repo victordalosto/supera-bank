@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import br.com.banco.extrato.model.TransferenciaDTO;
 import br.com.banco.extrato.service.ExtratoService;
 import br.com.banco.main.model.Conta;
@@ -23,7 +22,7 @@ import br.com.banco.main.repository.TransferenciaRepository;
 
 @RestController
 @RequestMapping("/api/extrato")
-public class ExtratoController {
+public class ExtratoRestController {
 
     @Autowired
     TransferenciaRepository transferenciaRepository;
