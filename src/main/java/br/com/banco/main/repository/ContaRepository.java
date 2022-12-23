@@ -4,5 +4,6 @@ import br.com.banco.main.model.Conta;
 
 
 public interface ContaRepository extends JpaRepository<Conta, Integer> {
+
     
 }
