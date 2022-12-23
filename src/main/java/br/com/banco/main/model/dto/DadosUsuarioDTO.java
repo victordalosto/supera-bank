@@ -4,20 +4,22 @@ import lombok.Data;
 
 
 @Data
-public class DadosBancarioDTO {
+public class DadosUsuarioDTO {
 
+    private String nomeReponsavel;
     private String agencia;
     private String contaCorrente;
 
 
-    public DadosBancarioDTO(DadosBancario dadosBancario) {
+    public DadosUsuarioDTO(DadosBancario dadosBancario) {
+        this.nomeReponsavel = dadosBancario.getConta().getNomeResponsavel();
         this.agencia = formataDadosConta(dadosBancario.getAgencia());
         this.contaCorrente = formataDadosConta(dadosBancario.getContaCorrente());
     }
 
 
-    public static DadosBancarioDTO converterEmDTO(DadosBancario dadosBancario) {
-        return new DadosBancarioDTO(dadosBancario);
+    public static DadosUsuarioDTO converterEmDTO(DadosBancario dadosBancario) {
+        return new DadosUsuarioDTO(dadosBancario);
     }
 
 

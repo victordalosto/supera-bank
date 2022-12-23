@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import br.com.banco.main.model.DadosBancario;
-import br.com.banco.main.model.dto.DadosBancarioDTO;
+import br.com.banco.main.model.dto.DadosUsuarioDTO;
 import br.com.banco.main.repository.DadosBancariosRepository;
 
 
@@ -22,11 +22,11 @@ public class UsuarioRestController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<DadosBancarioDTO> obtemExtratoBancarioPorId(@PathVariable Integer id) {
+    public ResponseEntity<DadosUsuarioDTO> obtemExtratoBancarioPorId(@PathVariable Integer id) {
         Optional<DadosBancario> optDadosBancario = dadosBancariosRepository.findById(id);
         if (optDadosBancario.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: " + id + " nao pode ser encontrado.");
-        return ResponseEntity.ok().body(DadosBancarioDTO.converterEmDTO(optDadosBancario.get()));
+        return ResponseEntity.ok().body(DadosUsuarioDTO.converterEmDTO(optDadosBancario.get()));
     }
     
 }

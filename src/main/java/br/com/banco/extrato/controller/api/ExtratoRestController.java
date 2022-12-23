@@ -44,7 +44,6 @@ public class ExtratoRestController {
             Optional<Conta> optConta = contaRepository.findById(id);
             if (optConta.isEmpty())
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Usuario de id: "+ id +" nao possui transferencias.");
         }
         return ResponseEntity.ok().body(TransferenciaDTO.converteEmDTO(pageTransferencias));
     }
