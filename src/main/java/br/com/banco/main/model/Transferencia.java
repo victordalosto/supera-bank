@@ -6,12 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 @Data
 @Entity
+@EqualsAndHashCode(of = "id")
 public class Transferencia {
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +33,7 @@ public class Transferencia {
     private String nomeOperadorTransacao;
 
     @ManyToOne
+    @JoinColumn(name = "CONTA_ID")
     private Conta contaId;
     
     

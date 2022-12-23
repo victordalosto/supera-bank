@@ -24,7 +24,7 @@ CREATE TABLE transferencia
 
 
 -- Acrescentado novas tabelas
-CREATE TABLE dados_bancarios
+CREATE TABLE dados_bancario
 (
     conta_id IDENTITY NOT NULL PRIMARY KEY,
     agencia INT NOT NULL,
@@ -48,7 +48,7 @@ INSERT INTO conta (id_conta, nome_responsavel) VALUES (7,'RESTAURANTE Fogão a l
 INSERT INTO conta (id_conta, nome_responsavel) VALUES (8,'PERFUMES boutique');
 INSERT INTO conta (id_conta, nome_responsavel) VALUES (9,'ROUPAS da moda');
 
-INSERT INTO dados_bancarios(conta_id, agencia, conta_corrente) VALUES (1, 157097, 302578);
+INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (1, 157097, 302578);
 
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (1,'2019-01-01 12:00:00+03',30895.46,'DEPOSITO', null, 1);
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (2,'2019-02-03 09:53:27+03',12.24,'DEPOSITO', null,2);

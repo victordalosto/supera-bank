@@ -9,6 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@lombok.EqualsAndHashCode(of = "idConta")
 public class Conta {
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)

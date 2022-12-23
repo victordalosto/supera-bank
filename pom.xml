@@ -8,15 +8,20 @@
         <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>br.com</groupId>
     <artifactId>banco</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>banco</name>
+    <version>1.0</version>
+
+    <name>supera-bank</name>
     <description>banco</description>
+
     <properties>
         <!-- <java.version>11</java.version> -->
         <java.version>18</java.version>
     </properties>
+
+    
     <dependencies>
 
         <dependency>
