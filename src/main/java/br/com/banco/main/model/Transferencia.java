@@ -1,7 +1,6 @@
 package br.com.banco.main.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,9 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -40,9 +37,9 @@ public class Transferencia {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONTA_ID")
-    @ToString.Exclude
-    @JsonIgnore
+    @JsonIgnore  @ToString.Exclude
     private Conta conta;
+
     
     
 }

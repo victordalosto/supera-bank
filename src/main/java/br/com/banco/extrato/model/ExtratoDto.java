@@ -6,7 +6,7 @@ import lombok.Data;
 
 
 @Data
-public class ExtratoDto {
+public class ExtratoDTO {
 
     private Timestamp dados;
     private BigDecimal valentia;
@@ -14,7 +14,7 @@ public class ExtratoDto {
     private String nomeOperadorTransacionado;
 
     
-    public ExtratoDto(Conta conta) {
+    public ExtratoDTO(Conta conta) {
         this.tipo = "vazio";
         this.nomeOperadorTransacionado = "OPERADOR VAZIO";
     }

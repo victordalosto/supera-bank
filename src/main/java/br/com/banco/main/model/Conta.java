@@ -1,4 +1,5 @@
 package br.com.banco.main.model;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.ToString;
 
 
 @Data
@@ -27,7 +30,8 @@ public class Conta {
     private DadosBancario dadosBancario;
 
     @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, orphanRemoval = true) 
-    private List<Transferencia> listTransferencias;
+    @JsonIgnore  @ToString.Exclude
+    private List<Transferencia> listTransferencias = new ArrayList<>();
 
     
 }
