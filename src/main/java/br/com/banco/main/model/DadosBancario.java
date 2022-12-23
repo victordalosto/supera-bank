@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class DadosBancario implements Serializable{
+public class DadosBancario implements Serializable {
 
     @Id
     private Integer idConta;

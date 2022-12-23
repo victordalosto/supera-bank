@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class SaldoDto {
+public class SaldoDTO {
 
     private BigDecimal saldoEntrada;
     private BigDecimal saldoSaida;

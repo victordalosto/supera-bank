@@ -40,9 +40,9 @@ public class Transferencia {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONTA_ID")
-    @ToString.Exclude
-    @JsonIgnore
+    @JsonIgnore  @ToString.Exclude
     private Conta conta;
+
     
     
 }
