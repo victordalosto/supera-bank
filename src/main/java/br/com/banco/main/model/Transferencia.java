@@ -34,7 +34,7 @@ public class Transferencia {
 
     @ManyToOne
     @JoinColumn(name = "CONTA_ID")
-    private Conta contaId;
+    private Conta conta;
     
     
 }
