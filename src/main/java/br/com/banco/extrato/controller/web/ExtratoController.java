@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import br.com.banco.extrato.controller.api.ExtratoRestController;
 import br.com.banco.extrato.model.TransferenciaDTO;
 import br.com.banco.main.controller.api.UsuarioRestController;
@@ -25,12 +26,12 @@ public class ExtratoController {
 
 
     @GetMapping("/{id}")
-    public String obtemExtratoPorId(@PathVariable Integer id, Pageable paginacao, Model model) {
+    public String getPaginaExtrato(@PathVariable Integer id, Pageable paginacao, Model model) {
         DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(id).getBody();
         model.addAttribute("dadosUsuario", dadosUsuario);
         Page<TransferenciaDTO> pageTransferenciaDTO = extratoRestController.obtemExtratoPorId(id, paginacao).getBody();
         model.addAttribute("extrato", pageTransferenciaDTO.getContent());
-        return "";
+        return "extrato";
     }
     
 }
