@@ -1,20 +1,20 @@
 <div id="tabela-extrato" th:fragment="tabela-extrato">
+    <br/><br/><br/>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">dados</th>
-                <th scope="col">tipo</th>
+                <th scope="col">Dados</th>
                 <th scope="col">Valentia</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Nome operador transacionado</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="extrato: ${listaExtrato}">
                 <td th:text="${extrato.dataTransferencia}"></td>
-                <td th:text="${extrato.tipo}"></td>
                 <td th:text="${extrato.valor}"></td>
+                <td th:text="${extrato.tipo}"></td>
                 <td th:text="${extrato.nomeOperadorTransacao}"></td>
-                <br/>
             </tr>
   
         </tbody>

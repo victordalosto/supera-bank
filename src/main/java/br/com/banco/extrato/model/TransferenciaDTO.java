@@ -1,7 +1,13 @@
 package br.com.banco.extrato.model;
-import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
 import org.springframework.data.domain.Page;
+
 import br.com.banco.main.model.Transferencia;
 import lombok.Data;
 
@@ -10,15 +16,17 @@ import lombok.Data;
 @Data
 public class TransferenciaDTO {
 
-    private Timestamp dataTransferencia;
-    private BigDecimal valor;
+    static private DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    private String dataTransferencia;
+    private String valor;
     private String tipo;
     private String nomeOperadorTransacao;
 
 
     public TransferenciaDTO(Transferencia transferencia) {
-        this.dataTransferencia = transferencia.getDataTransferencia();
-        this.valor = transferencia.getValor();
+        this.dataTransferencia = formatadorData.format(transferencia.getDataTransferencia().toLocalDateTime().toLocalDate());
+        this.valor = "R$ " + transferencia.getValor().setScale(2, RoundingMode.HALF_EVEN).toString().replaceAll("\\.", ",");
         this.tipo = transferencia.getTipo();
         this.nomeOperadorTransacao = transferencia.getNomeOperadorTransacao();
     }
