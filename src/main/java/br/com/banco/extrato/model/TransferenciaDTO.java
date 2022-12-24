@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class TransferenciaDTO {
 
-    private Integer id;
     private Timestamp dataTransferencia;
     private BigDecimal valor;
     private String tipo;
@@ -18,7 +17,6 @@ public class TransferenciaDTO {
 
 
     public TransferenciaDTO(Transferencia transferencia) {
-        this.id = transferencia.getId();
         this.dataTransferencia = transferencia.getDataTransferencia();
         this.valor = transferencia.getValor();
         this.tipo = transferencia.getTipo();

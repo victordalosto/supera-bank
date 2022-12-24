@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 public class DadosUsuarioDTO {
 
-    private String nomeReponsavel;
+    private String nome;
     private String agencia;
     private String contaCorrente;
 
 
     public DadosUsuarioDTO(DadosBancario dadosBancario) {
-        this.nomeReponsavel = dadosBancario.getConta().getNomeResponsavel();
+        this.nome = dadosBancario.getConta().getNomeResponsavel();
         this.agencia = formataDadosConta(dadosBancario.getAgencia());
         this.contaCorrente = formataDadosConta(dadosBancario.getContaCorrente());
     }

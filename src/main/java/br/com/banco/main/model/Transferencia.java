@@ -41,5 +41,4 @@ public class Transferencia {
     private Conta conta;
 
     
-    
 }
