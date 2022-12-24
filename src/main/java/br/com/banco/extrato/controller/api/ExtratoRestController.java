@@ -1,4 +1,5 @@
 package br.com.banco.extrato.controller.api;
+import java.math.BigDecimal;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import br.com.banco.extrato.model.TransferenciaDTO;
-import br.com.banco.extrato.service.ExtratoService;
+import br.com.banco.extrato.model.ExtratoDTO;
+import br.com.banco.extrato.model.MovimentacoesDTO;
+import br.com.banco.extrato.model.PaginaExtrato;
+import br.com.banco.extrato.service.MovimentacoesService;
 import br.com.banco.main.model.Conta;
 import br.com.banco.main.model.Transferencia;
 import br.com.banco.main.repository.ContaRepository;
@@ -25,28 +28,41 @@ import br.com.banco.main.repository.TransferenciaRepository;
 public class ExtratoRestController {
 
     @Autowired
-    TransferenciaRepository transferenciaRepository;
+    private TransferenciaRepository transferenciaRepository;
 
     @Autowired
-    ContaRepository contaRepository;
+    private ContaRepository contaRepository;
 
     @Autowired
-    ExtratoService extratoService;
+    private SaldoRestController saldoRestController;
+
+    @Autowired
+    private MovimentacoesService movimentacoesService;
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Page<TransferenciaDTO>> obtemExtratoPorId(
+    public ResponseEntity<PaginaExtrato> obtemPaginaExtrato(
                 @PathVariable Integer id, 
                 @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 10)
                 Pageable paginacao) {
         Page<Transferencia> pageTransferencias = transferenciaRepository.buscaListaTransferenciasPorIdConta(id, paginacao);
-        if (pageTransferencias.isEmpty()) {
-            Optional<Conta> optConta = contaRepository.findById(id);
-            if (optConta.isEmpty())
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");
-        }
-        return ResponseEntity.ok().body(TransferenciaDTO.converteEmDTO(pageTransferencias));
+        if (pageTransferencias.isEmpty())
+            validaSeEhUsuarioValido(id);
+        MovimentacoesDTO movimentacoesDTO = movimentacoesService.obtemMovimentacoesDTONaLista(pageTransferencias.getContent());
+        Page<ExtratoDTO> extratoDTO = ExtratoDTO.converteEmDTO(pageTransferencias);
+        BigDecimal saldoUsuario = saldoRestController.obtemSaldo(id);
+        PaginaExtrato paginaExtrato = new PaginaExtrato(saldoUsuario, movimentacoesDTO, extratoDTO);
+        return ResponseEntity.ok().body(paginaExtrato);
     }
+
+
+
+    private void validaSeEhUsuarioValido(Integer id) {
+        Optional<Conta> optConta = contaRepository.findById(id);
+        if (optConta.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");
+    }
+
 
     
 }

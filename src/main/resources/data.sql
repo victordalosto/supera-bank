@@ -35,6 +35,16 @@ CREATE TABLE dados_bancario
         REFERENCES conta(id_conta)
 );
 
+CREATE TABLE saldo
+(
+    conta_id IDENTITY NOT NULL PRIMARY KEY,
+    saldo NUMERIC NOT NULL,
+
+        CONSTRAINT FK_CONTA_SALDo
+        FOREIGN KEY (conta_id)
+        REFERENCES conta(id_conta)
+);
+
 
 
 -- Acrescentado novos valores para popular o banco
@@ -57,6 +67,16 @@ INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (6, 21437,
 INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (7, 25317, 321498);
 INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (8, 25547, 312658);
 INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (9, 26547, 344678);
+
+INSERT INTO saldo (conta_id, saldo) VALUES (1, 24808.54);
+INSERT INTO saldo (conta_id, saldo) VALUES (2, 27154.83);
+INSERT INTO saldo (conta_id, saldo) VALUES (3, 2494.45);
+INSERT INTO saldo (conta_id, saldo) VALUES (4, 2416.06);
+INSERT INTO saldo (conta_id, saldo) VALUES (5, 2324.72);
+INSERT INTO saldo (conta_id, saldo) VALUES (6, 2324.86);
+INSERT INTO saldo (conta_id, saldo) VALUES (7, 2464.49);
+INSERT INTO saldo (conta_id, saldo) VALUES (8, -50.12);
+INSERT INTO saldo (conta_id, saldo) VALUES (9, -28.51);
 
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (1,'2019-01-01 12:00:00+03',30895.46,'DEPOSITO', null, 1);
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (2,'2019-02-03 09:53:27+03',12.24,'DEPOSITO', null,2);

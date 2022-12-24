@@ -1,6 +1,5 @@
 package br.com.banco.extrato.controller.web;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -11,8 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.banco.extrato.controller.api.ExtratoRestController;
-import br.com.banco.extrato.model.TransferenciaDTO;
-import br.com.banco.extrato.service.ExtratoService;
+import br.com.banco.extrato.model.PaginaExtrato;
 import br.com.banco.main.controller.api.UsuarioRestController;
 import br.com.banco.main.model.dto.DadosUsuarioDTO;
 
@@ -22,13 +20,11 @@ import br.com.banco.main.model.dto.DadosUsuarioDTO;
 public class ExtratoController {
 
     @Autowired
-    UsuarioRestController usuarioRestController;
+    private UsuarioRestController usuarioRestController;
 
     @Autowired
-    ExtratoRestController extratoRestController;
+    private ExtratoRestController extratoRestController;
 
-    @Autowired
-    ExtratoService extratoService;
 
 
     @GetMapping("/{id}")
@@ -36,8 +32,9 @@ public class ExtratoController {
                                    Pageable paginacao, Model model) {
         DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(id).getBody();
         model.addAttribute("dadosUsuario", dadosUsuario);
-        Page<TransferenciaDTO> listaExtrato = extratoRestController.obtemExtratoPorId(id, paginacao).getBody();
-        model.addAttribute("listaExtrato", listaExtrato.getContent());
+        PaginaExtrato paginaExtrato = extratoRestController.obtemPaginaExtrato(id, paginacao).getBody();
+        model.addAttribute("listaExtrato", paginaExtrato.getExtratos().getContent());
+        model.addAttribute("movimentacoes", paginaExtrato.getMovimentacoes());
         return "extrato";
     }
 }

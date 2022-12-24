@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
 import br.com.banco.main.model.DadosBancario;
 import br.com.banco.main.model.dto.DadosUsuarioDTO;
 import br.com.banco.main.repository.DadosBancariosRepository;
@@ -18,7 +19,7 @@ import br.com.banco.main.repository.DadosBancariosRepository;
 public class UsuarioRestController {
 
     @Autowired
-    DadosBancariosRepository dadosBancariosRepository;
+    private DadosBancariosRepository dadosBancariosRepository;
 
 
     @GetMapping("/{id}")
