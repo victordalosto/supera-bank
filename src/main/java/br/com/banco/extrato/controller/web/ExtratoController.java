@@ -40,6 +40,7 @@ public class ExtratoController {
         model.addAttribute("movimentacoes", paginaExtrato.getMovimentacoes());
         model.addAttribute("saldo", paginaExtrato.getSaldoAtual());
         model.addAttribute("dataAtual", LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MMMM/YYYY")));
+        model.addAttribute("form", extratoForm);
         return "extrato";
     }
 }

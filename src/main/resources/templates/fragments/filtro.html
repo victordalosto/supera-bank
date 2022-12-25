@@ -12,21 +12,21 @@
             <!-- Name input -->
             <div class="form-outline">
               <label class="form-label ml-1" for="filtroInicio">Data Inicio</label>
-              <input type="date" id="filtroInicio" name="filtroInicio" class="form-control mt-0">
+              <input type="date" id="filtroInicio" name="filtroInicio" class="form-control mt-0" th:value="${form.dataInicio} == null ? ${#dates.format(#dates.createNow(), 'yyyy-MM-dd')} : ${form.dataInicio}">
             </div>
           </div>
           <div class="col">
             <!-- Name input -->
             <div class="form-outline">
               <label class="form-label ml-1" for="filtroFim">Data Fim</label>
-              <input type="date" id="filtroFim" name="filtroFim" class="form-control">
+              <input type="date" id="filtroFim" name="filtroFim" class="form-control" th:value="${form.dataInicio} == null ? '2022-11-01' : ${form.dataInicio}">
             </div>
           </div>
           <div class="col">
             <!-- Email input -->
             <div class="form-outline">
-              <label class="form-label ml-1" for="operador">Nome operator transacionado</label>
-              <input type="text" id="operador" class="form-control" />
+              <label class="form-label ml-1" for="operador">Operador</label>
+              <input type="text" id="operador" name="operador" class="form-control" th:value="${form.operador} != null ? ${form.operador} : testa" />
             </div>
           </div>
           <input class="btn btn-primary" type="submit">
