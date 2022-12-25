@@ -14,9 +14,9 @@ public class MovimentacoesService {
         BigDecimal saldoNegativo = somaSaldosNegativosDaLista(lista);
         BigDecimal saldoTotal = somaSaldoTotalDaLista(lista);
         return SaldoMovimentacoesDTO.builder()
-                       .saldoEntradaNoPeriodo(saldoPositivo)
-                       .saldoSaidaNoPeriodo(saldoNegativo)
-                       .saldoTotalNoPeriodo(saldoTotal)
+                       .saldoEntradaNoPeriodo(saldoPositivo.toString())
+                       .saldoSaidaNoPeriodo(saldoNegativo.toString())
+                       .saldoTotalNoPeriodo(saldoTotal.toString())
                        .build();
     }
 

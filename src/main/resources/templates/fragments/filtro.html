@@ -1,0 +1,38 @@
+<div id="filtro" th:fragment="filtro">
+
+    <form action="/extrato">
+    <!-- <form action="/extrato" method="post"> -->
+        <input type="hidden" id="id" name="id" th:value="${dadosUsuario.id}">
+
+        <div class="row">
+            <div class="col">
+              <!-- Name input -->
+              <div class="form-outline">
+                <input type="date" id="filtroInicio" name="filtroInicio" class="form-control">
+                <label class="form-label ml-1" for="filtroInicio">Data Inicio</label>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Name input -->
+              <div class="form-outline">
+                <input type="date" id="filtroFim" name="filtroFim" class="form-control">
+                <label class="form-label ml-1" for="filtroFim">Data Fim</label>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Email input -->
+              <div class="form-outline">
+                <input type="text" id="nome" class="form-control" />
+                <label class="form-label ml-1" for="nome">Nome operator transacionado</label>
+              </div>
+            </div>
+            <input class="btn btn-primary" type="submit">
+        </div>
+        </div>
+    </form>
+    <br>
+
+
+    
+    
+</div>

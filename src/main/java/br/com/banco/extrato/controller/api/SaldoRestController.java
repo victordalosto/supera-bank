@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,8 +22,8 @@ public class SaldoRestController {
     private SaldoUsuarioRepository saldoUsuarioRepository;
 
 
-    @GetMapping("/{id}")
-    public BigDecimal obtemSaldo( @PathVariable Integer id) {
+    @GetMapping
+    public BigDecimal obtemSaldo(Integer id) {
         Optional<Saldo> optSaldo = saldoUsuarioRepository.findById(id);
         if (optSaldo.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");

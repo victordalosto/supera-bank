@@ -68,7 +68,7 @@ INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (7, 25317,
 INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (8, 25547, 312658);
 INSERT INTO dados_bancario (conta_id, agencia, conta_corrente) VALUES (9, 26547, 344678);
 
-INSERT INTO saldo (conta_id, saldo) VALUES (1, 24808.54);
+INSERT INTO saldo (conta_id, saldo) VALUES (1, 808.54);
 INSERT INTO saldo (conta_id, saldo) VALUES (2, 27154.83);
 INSERT INTO saldo (conta_id, saldo) VALUES (3, 2494.45);
 INSERT INTO saldo (conta_id, saldo) VALUES (4, 2416.06);
@@ -78,7 +78,7 @@ INSERT INTO saldo (conta_id, saldo) VALUES (7, 2464.49);
 INSERT INTO saldo (conta_id, saldo) VALUES (8, -50.12);
 INSERT INTO saldo (conta_id, saldo) VALUES (9, -28.51);
 
-INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (1,'2019-01-01 12:00:00+03',30895.46,'DEPOSITO', null, 1);
+INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (1,'2019-01-01 12:00:00+03',6895.46,'DEPOSITO', null, 1);
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (2,'2019-02-03 09:53:27+03',12.24,'DEPOSITO', null,2);
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (3,'2019-05-04 08:12:45+03',-500.50,'SAQUE', null,1);
 INSERT INTO transferencia (id, data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES (4,'2019-08-07 08:12:45+03',-530.50,'SAQUE', null,2);

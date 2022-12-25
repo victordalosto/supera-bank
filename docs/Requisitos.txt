@@ -20,6 +20,6 @@ Versão: R00 (21/12/2022)
 @EPIC: COMO usuario regular do aplicativo do banco, QUERO ter acesso a algumas funcionalidades do banco.
   -STORYS: COMO usuario regular, QUERO:
     -STORY#8: Visualizar o meu avatar, meu nome, minha agencia e a conta corrente da minha conta bancária;
-    -STORY#9: Ter acesso ao menu a algumas das funcionalidades do banco, como voltar a pagina inicial e deslogar;
+    -STORY#9: Ter acesso ao menu a algumas das funcionalidades do banco, como voltar a pagina inicial;
 
 Obs: Operador de transação é o nome do responsável de destino da transação caso seja uma operação de transferência de saida ou o nome do responsável de onde se originou a transação caso seja uma operação de transferência de entrada.

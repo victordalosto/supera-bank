@@ -1,5 +1,4 @@
 package br.com.banco.extrato.model;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,9 +7,17 @@ import lombok.Data;
 @Builder
 public class SaldoMovimentacoesDTO {
 
-    private BigDecimal saldoEntradaNoPeriodo;
-    private BigDecimal saldoSaidaNoPeriodo;
-    private BigDecimal saldoTotalNoPeriodo;
+    private String saldoEntradaNoPeriodo;
+    private String saldoSaidaNoPeriodo;
+    private String saldoTotalNoPeriodo;
+
+    
+    public SaldoMovimentacoesDTO(String entrada, String saida, String total) {
+        this.saldoEntradaNoPeriodo = "R$ " + entrada.replaceAll("\\.", ",");
+        this.saldoSaidaNoPeriodo = "R$ " + saida.replaceAll("\\.", ",");
+        this.saldoTotalNoPeriodo = "R$ " + total.replaceAll("\\.", ",");
+        
+    }
 
     
 }

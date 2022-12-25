@@ -9,11 +9,27 @@
 </head>
 
 <body>
-
     <div class="container">
         <div th:replace="~{fragments/menusuperior :: menu-superior}"></div>
-        <div th:replace="~{fragments/tabelaExtrato :: tabela-extrato}"></div>
-    </div>
+        <br/><br/><br/>
+        
+        <h2>Extrato</h2>
 
+        <h4> Filtros</h4>
+
+        <div th:replace="~{fragments/filtro :: filtro}"></div>
+
+        <br/>
+
+        <h6 class="text-center">Transações no período</h6>
+        <div th:replace="~{fragments/tabelaExtrato :: tabela-extrato}"></div>
+        <div th:replace="~{fragments/tabelaSaldo :: tabela-saldo}"></div>
+        
+        <br/>
+        <h6 class="text-center" th:text="'Supera-bank,  ' + ${dataAtual}">Supera-bank, data de hoje</h6>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+        
+    </div>
 </body>
+
 </html>

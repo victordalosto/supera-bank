@@ -1,0 +1,22 @@
+<div id="tabela-saldo" th:fragment="tabela-saldo">
+    <table class="table mx-6">
+        <tbody>
+            <tr>
+                <td>Total recebido no período (Crédito): </td>
+                <td th:text="${movimentacoes.saldoEntradaNoPeriodo}">R$ XX,00</td>
+            </tr>
+            <tr>
+                <td>Total gastos/saida no período (Debido): </td>
+                <td th:text="${movimentacoes.saldoSaidaNoPeriodo}">R$ XX,00</td>
+            </tr>
+            <tr>
+                <td>Total movimentado no período: </td>
+                <td th:text="${movimentacoes.saldoTotalNoPeriodo}">R$ XX,00</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Saldo atual da conta: </td>
+                <td class="font-weight-bold" th:text="${saldo}">R$ XX,00</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
