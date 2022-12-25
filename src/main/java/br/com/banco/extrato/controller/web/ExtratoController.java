@@ -33,6 +33,8 @@ public class ExtratoController {
     public String getPaginaExtrato(Integer id, 
                                    @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao, 
                                    Model model) {
+        if (id == 0)
+            return "redirect:/home";
         DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(id).getBody();
         model.addAttribute("dadosUsuario", dadosUsuario);
         PaginaExtrato paginaExtrato = extratoRestController.obtemPaginaExtrato(id, paginacao).getBody();

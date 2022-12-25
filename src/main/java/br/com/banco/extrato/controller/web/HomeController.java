@@ -1,0 +1,18 @@
+package br.com.banco.extrato.controller.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+public class HomeController {
+
+
+    @GetMapping
+    String homePage() {
+        System.out.println("\n\nSendRedirect");
+        return "index";
+    }
+    
+}

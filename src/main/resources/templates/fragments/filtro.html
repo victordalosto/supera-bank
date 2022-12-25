@@ -1,38 +1,44 @@
 <div id="filtro" th:fragment="filtro">
 
-    <form action="/extrato">
-    <!-- <form action="/extrato" method="post"> -->
+  <div class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">Filtros</h5>
+      <form action="/extrato">
+        <!-- <form action="/extrato" method="post"> -->
         <input type="hidden" id="id" name="id" th:value="${dadosUsuario.id}">
 
         <div class="row">
-            <div class="col">
-              <!-- Name input -->
-              <div class="form-outline">
-                <input type="date" id="filtroInicio" name="filtroInicio" class="form-control">
-                <label class="form-label ml-1" for="filtroInicio">Data Inicio</label>
-              </div>
+          <div class="col">
+            <!-- Name input -->
+            <div class="form-outline">
+              <label class="form-label ml-1" for="filtroInicio">Data Inicio</label>
+              <input type="date" id="filtroInicio" name="filtroInicio" class="form-control mt-0">
             </div>
-            <div class="col">
-              <!-- Name input -->
-              <div class="form-outline">
-                <input type="date" id="filtroFim" name="filtroFim" class="form-control">
-                <label class="form-label ml-1" for="filtroFim">Data Fim</label>
-              </div>
+          </div>
+          <div class="col">
+            <!-- Name input -->
+            <div class="form-outline">
+              <label class="form-label ml-1" for="filtroFim">Data Fim</label>
+              <input type="date" id="filtroFim" name="filtroFim" class="form-control">
             </div>
-            <div class="col">
-              <!-- Email input -->
-              <div class="form-outline">
-                <input type="text" id="nome" class="form-control" />
-                <label class="form-label ml-1" for="nome">Nome operator transacionado</label>
-              </div>
+          </div>
+          <div class="col">
+            <!-- Email input -->
+            <div class="form-outline">
+              <label class="form-label ml-1" for="operador">Nome operator transacionado</label>
+              <input type="text" id="operador" class="form-control" />
             </div>
-            <input class="btn btn-primary" type="submit">
+          </div>
+          <input class="btn btn-primary" type="submit">
         </div>
-        </div>
+    </div>
     </form>
-    <br>
+  </div>
 
 
-    
-    
+  <br>
+
+
+
+
 </div>
