@@ -12,6 +12,7 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, In
            countQuery = "SELECT count(*) FROM Transferencia t WHERE t.conta.idConta = :id",
            nativeQuery = false)
     Page<Transferencia> buscaListaTransferenciasPorIdConta(Integer id, Pageable paginacao);
-    
+
+
     
 }
