@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import br.com.banco.extrato.model.ExtratoDTO;
-import br.com.banco.extrato.model.MovimentacoesDTO;
+import br.com.banco.extrato.model.SaldoMovimentacoesDTO;
 import br.com.banco.extrato.model.PaginaExtrato;
 import br.com.banco.extrato.service.MovimentacoesService;
 import br.com.banco.main.model.Conta;
@@ -45,19 +45,18 @@ public class ExtratoRestController {
                 @PathVariable Integer id, 
                 @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 10)
                 Pageable paginacao) {
-        Page<Transferencia> pageTransferencias = transferenciaRepository.buscaListaTransferenciasPorIdConta(id, paginacao);
-        if (pageTransferencias.isEmpty())
-            validaSeEhUsuarioValido(id);
-        MovimentacoesDTO movimentacoesDTO = movimentacoesService.obtemMovimentacoesDTONaLista(pageTransferencias.getContent());
-        Page<ExtratoDTO> extratoDTO = ExtratoDTO.converteEmDTO(pageTransferencias);
+        validaSeUsuarioExiste(id);
         BigDecimal saldoUsuario = saldoRestController.obtemSaldo(id);
-        PaginaExtrato paginaExtrato = new PaginaExtrato(saldoUsuario, movimentacoesDTO, extratoDTO);
+        Page<Transferencia> pageTransferencias = transferenciaRepository.buscaListaTransferenciasPorIdConta(id, paginacao);
+        SaldoMovimentacoesDTO saldoMovimentacoesDTO = movimentacoesService.obtemMovimentacoesDTONaLista(pageTransferencias.getContent());
+        Page<ExtratoDTO> extratoDTO = ExtratoDTO.converteEmDTO(pageTransferencias);
+        PaginaExtrato paginaExtrato = new PaginaExtrato(saldoUsuario, saldoMovimentacoesDTO, extratoDTO);
         return ResponseEntity.ok().body(paginaExtrato);
     }
 
 
 
-    private void validaSeEhUsuarioValido(Integer id) {
+    private void validaSeUsuarioExiste(Integer id) {
         Optional<Conta> optConta = contaRepository.findById(id);
         if (optConta.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario de id: "+ id +" nao pode ser encontrado.");

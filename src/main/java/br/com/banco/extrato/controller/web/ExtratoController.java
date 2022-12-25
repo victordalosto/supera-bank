@@ -33,7 +33,7 @@ public class ExtratoController {
         DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(id).getBody();
         model.addAttribute("dadosUsuario", dadosUsuario);
         PaginaExtrato paginaExtrato = extratoRestController.obtemPaginaExtrato(id, paginacao).getBody();
-        model.addAttribute("listaExtrato", paginaExtrato.getExtratos().getContent());
+        model.addAttribute("listaExtrato", paginaExtrato.obtemListaExtrato());
         model.addAttribute("movimentacoes", paginaExtrato.getMovimentacoes());
         return "extrato";
     }

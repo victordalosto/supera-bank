@@ -2,18 +2,18 @@ package br.com.banco.extrato.service;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import br.com.banco.extrato.model.MovimentacoesDTO;
+import br.com.banco.extrato.model.SaldoMovimentacoesDTO;
 import br.com.banco.main.model.Transferencia;
 
 
 @Service
 public class MovimentacoesService {
 
-    public MovimentacoesDTO obtemMovimentacoesDTONaLista(List<Transferencia> lista) {
+    public SaldoMovimentacoesDTO obtemMovimentacoesDTONaLista(List<Transferencia> lista) {
         BigDecimal saldoPositivo = somaSaldosPositivosDaLista(lista);
         BigDecimal saldoNegativo = somaSaldosNegativosDaLista(lista);
         BigDecimal saldoTotal = somaSaldoTotalDaLista(lista);
-        return MovimentacoesDTO.builder()
+        return SaldoMovimentacoesDTO.builder()
                        .saldoEntradaNoPeriodo(saldoPositivo)
                        .saldoSaidaNoPeriodo(saldoNegativo)
                        .saldoTotalNoPeriodo(saldoTotal)

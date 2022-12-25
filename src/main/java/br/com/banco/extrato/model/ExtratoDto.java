@@ -18,7 +18,7 @@ public class ExtratoDTO {
     private String valor;
     private String tipo;
     private String nomeOperadorTransacao;
-    private MovimentacoesDTO movimentacoes;
+    private SaldoMovimentacoesDTO movimentacoes;
 
 
     public ExtratoDTO(Transferencia transferencia) {
