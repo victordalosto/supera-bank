@@ -13,12 +13,17 @@
         <div th:replace="~{fragments/menusuperior :: menu-superior}"></div>
         <br/><br/><br/>
         
-        <h2>Extrato</h2>
+        <h2 class="ml-3 mb-3">Extrato</h2>
         <div th:replace="~{fragments/filtro :: filtro}"></div>
 
-        <h5 class="text-center mt-2">Transações no período</h5>
-        <div th:replace="~{fragments/tabelaExtrato :: tabela-extrato}"></div>
-        <div th:replace="~{fragments/tabelaSaldo :: tabela-saldo}"></div>
+        <div class="card mt-3" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">Movimentações no período</h5>
+                <div th:replace="~{fragments/tabelaExtrato :: tabela-extrato}"></div>
+                <div th:replace="~{fragments/tabelaSaldo :: tabela-saldo}"></div>
+            </div>
+        </div>
+
         
         <br/>
         <h6 class="text-center" th:text="'Supera-bank,  ' + ${dataAtual}">Supera-bank, data de hoje</h6>

@@ -1,7 +1,6 @@
 package br.com.banco.extrato.controller.web;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.com.banco.extrato.controller.api.ExtratoRestController;
+import br.com.banco.extrato.model.ExtratoForm;
 import br.com.banco.extrato.model.PaginaExtrato;
 import br.com.banco.main.controller.api.UsuarioRestController;
 import br.com.banco.main.model.dto.DadosUsuarioDTO;
@@ -28,16 +27,15 @@ public class ExtratoController {
     private ExtratoRestController extratoRestController;
 
 
-
     @GetMapping
-    public String getPaginaExtrato(Integer id, 
+    public String getPaginaExtrato(ExtratoForm extratoForm, 
                                    @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao, 
                                    Model model) {
-        if (id == 0)
-            return "redirect:/home";
-        DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(id).getBody();
+        if (extratoForm.getId() == null || extratoForm.getId() == 0)
+            return "redirect:/";
+        DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(extratoForm.getId()).getBody();
         model.addAttribute("dadosUsuario", dadosUsuario);
-        PaginaExtrato paginaExtrato = extratoRestController.obtemPaginaExtrato(id, paginacao).getBody();
+        PaginaExtrato paginaExtrato = extratoRestController.obtemPaginaExtrato(extratoForm, paginacao).getBody();
         model.addAttribute("listaExtrato", paginaExtrato.obtemListaExtrato());
         model.addAttribute("movimentacoes", paginaExtrato.getMovimentacoes());
         model.addAttribute("saldo", paginaExtrato.getSaldoAtual());

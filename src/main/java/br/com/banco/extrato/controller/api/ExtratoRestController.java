@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.banco.extrato.model.ExtratoDTO;
+import br.com.banco.extrato.model.ExtratoForm;
 import br.com.banco.extrato.model.PaginaExtrato;
 import br.com.banco.extrato.model.SaldoMovimentacoesDTO;
 import br.com.banco.extrato.service.MovimentacoesService;
@@ -42,11 +43,11 @@ public class ExtratoRestController {
 
 
     @GetMapping
-    public ResponseEntity<PaginaExtrato> obtemPaginaExtrato(Integer id, 
+    public ResponseEntity<PaginaExtrato> obtemPaginaExtrato(ExtratoForm extratoForm, 
                 @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao) {
-        validaSeUsuarioExiste(id);
-        BigDecimal saldoUsuario = saldoRestController.obtemSaldo(id);
-        Page<Transferencia> pageTransferencias = transferenciaRepository.buscaListaTransferenciasPorIdConta(id, paginacao);
+        validaSeUsuarioExiste(extratoForm.getId());
+        BigDecimal saldoUsuario = saldoRestController.obtemSaldo(extratoForm.getId());
+        Page<Transferencia> pageTransferencias = transferenciaRepository.buscaListaTransferenciasPorIdConta(extratoForm.getId(), paginacao);
         SaldoMovimentacoesDTO saldoMovimentacoesDTO = movimentacoesService.obtemMovimentacoesDTONaLista(pageTransferencias.getContent());
         Page<ExtratoDTO> extratoDTO = ExtratoDTO.converteEmDTO(pageTransferencias);
         PaginaExtrato paginaExtrato = new PaginaExtrato(saldoUsuario, saldoMovimentacoesDTO, extratoDTO);
