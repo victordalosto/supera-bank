@@ -32,14 +32,13 @@ public class Transferencia {
     @Column(length = 15, nullable = false)
     private String tipo;
 
-    @Column(length = 250)
-    private String nomeOperadorTransacao;
+    @Column(length = 250, name = "nome_operador_transacao")
+    private String operador;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONTA_ID")
     @JsonIgnore  @ToString.Exclude
     private Conta conta;
 
-    
     
 }
