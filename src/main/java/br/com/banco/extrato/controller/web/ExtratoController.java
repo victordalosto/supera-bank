@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.banco.extrato.controller.api.ExtratoRestController;
 import br.com.banco.extrato.model.ExtratoForm;
@@ -29,8 +30,21 @@ public class ExtratoController {
 
     @GetMapping
     public String getPaginaExtrato(ExtratoForm extratoForm, 
-                                   @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 5) Pageable paginacao, 
+                                   @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 100) Pageable paginacao, 
                                    Model model) {
+        return rotinaExecucao(extratoForm, paginacao, model);
+    }
+
+
+    @PostMapping("/form")
+    public String postPaginaExtrato(ExtratoForm extratoForm, 
+                                    @PageableDefault(sort = "dataTransferencia", direction = Direction.DESC, page = 0, size = 100) Pageable paginacao, 
+                                    Model model) {
+        return rotinaExecucao(extratoForm, paginacao, model);
+    }
+
+
+    private String rotinaExecucao(ExtratoForm extratoForm, Pageable paginacao, Model model) {
         if (extratoForm.getId() == null || extratoForm.getId() == 0)
             return "redirect:/";
         DadosUsuarioDTO dadosUsuario = usuarioRestController.obtemExtratoBancarioPorId(extratoForm.getId()).getBody();

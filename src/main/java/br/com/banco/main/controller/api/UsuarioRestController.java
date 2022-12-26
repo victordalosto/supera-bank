@@ -30,4 +30,5 @@ public class UsuarioRestController {
         return ResponseEntity.ok().body(DadosUsuarioDTO.converterEmDTO(optDadosBancario.get()));
     }
     
+    
 }

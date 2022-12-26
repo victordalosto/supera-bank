@@ -3,30 +3,30 @@
   <div class="card" style="width: 100%;">
     <div class="card-body">
       <h5 class="card-title">Filtros</h5>
-      <form action="/extrato">
-        <!-- <form action="/extrato" method="post"> -->
+      <!-- <form action="/extrato"> -->
+        <form action="/extrato/form" method="post">
         <input type="hidden" id="id" name="id" th:value="${dadosUsuario.id}">
 
         <div class="row">
           <div class="col">
             <!-- Name input -->
             <div class="form-outline">
-              <label class="form-label ml-1" for="filtroInicio">Data Inicio</label>
-              <input type="date" id="filtroInicio" name="filtroInicio" class="form-control mt-0" th:value="${form.dataInicio} == null ? ${#dates.format(#dates.createNow(), 'yyyy-MM-dd')} : ${form.dataInicio}">
+              <label class="form-label ml-1" for="dataInicio">Data Inicio</label>
+              <input type="date" id="dataInicio" name="dataInicio" class="form-control mt-0" th:value="${form.dataInicio} != null ? ${form.dataInicio}">
             </div>
           </div>
           <div class="col">
             <!-- Name input -->
             <div class="form-outline">
-              <label class="form-label ml-1" for="filtroFim">Data Fim</label>
-              <input type="date" id="filtroFim" name="filtroFim" class="form-control" th:value="${form.dataInicio} == null ? '2022-11-01' : ${form.dataInicio}">
+              <label class="form-label ml-1" for="dataFim">Data Fim</label>
+              <input type="date" id="dataFim" name="dataFim" class="form-control" th:value="${form.dataFim} == null ? ${#dates.format(#dates.createNow(), 'yyyy-MM-dd')} : ${form.dataFim}">
             </div>
           </div>
           <div class="col">
             <!-- Email input -->
             <div class="form-outline">
               <label class="form-label ml-1" for="operador">Operador</label>
-              <input type="text" id="operador" name="operador" class="form-control" th:value="${form.operador} != null ? ${form.operador} : testa" />
+              <input type="text" id="operador" name="operador" class="form-control" th:value="${form.operador} != null ? ${form.operador}" />
             </div>
           </div>
           <input class="btn btn-primary" type="submit">

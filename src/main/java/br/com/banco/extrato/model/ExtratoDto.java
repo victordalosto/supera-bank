@@ -17,7 +17,7 @@ public class ExtratoDTO {
     private String dataTransferencia;
     private String valor;
     private String tipo;
-    private String nomeOperadorTransacao;
+    private String operador;
     private SaldoMovimentacoesDTO movimentacoes;
 
 
@@ -25,7 +25,7 @@ public class ExtratoDTO {
         this.dataTransferencia = formatadorData.format(transferencia.getDataTransferencia().toLocalDateTime().toLocalDate());
         this.valor = "R$ " + transferencia.getValor().setScale(2, RoundingMode.HALF_EVEN).toString().replaceAll("\\.", ",");
         this.tipo = transferencia.getTipo();
-        this.nomeOperadorTransacao = transferencia.getNomeOperadorTransacao();
+        this.operador = transferencia.getOperador();
     }
 
 

@@ -11,7 +11,6 @@ public class HomeController {
 
     @GetMapping
     String homePage() {
-        System.out.println("\n\nSendRedirect");
         return "index";
     }
     
