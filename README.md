@@ -1,49 +1,43 @@
-# Processo Seletivo Java
+# Processo Seletivo Java - Supera
 
-## Descrição 
+## Desafio 05 
 
-- Este teste consiste em construir uma camada de serviço, para uma operação muito realizada em bancos, para emissão de extrato bancário.
+Este repositório contém uma API construida para o processo seletivo de BACKEND em JAVA, onde é construida uma camada de serviço para a emissão de extrato bancário.
+
+O repositório contem duas funcionalidades implementadas em conjunto, a sua API REST, bem como a sua API para front end.
+
+A <strong>API REST</strong> foi desenvolvida utilizando os frameworks do SPRING, como SPRING DATA JPA. <br>
+O <strong>FRONT-END</strong> da aplicação foi desenvolvida utilizando o próprio Thymeleaf do SPRING, junto com a sua dependência WEB.
+
+## Como executar:
+
+Para execucar a aplicação, basta executar no prompt do diretório usando os seguintes comandos:
+
+    ./mvnw clean package
+    java -jar target/banco-1.0.jar
 
 
-## Como executar a aplicação 
+## Testar a API REST
 
-- Você pode executar a aplicação da maneira que quiser e utilizando a IDE de sua preferência. 
-- Caso queira executar a aplicação via linha de comando, execute primeiramente o comando:
+Os end-points disponíveis para testar a API são testados no endereco:
+`localhost`. Porta padrão :80.
 
-                   ./mvnw clean package  para linux.
+`/api/extrato`: Disponibiliza um json contendo as movimentacoes financeiras do usuario. Devolve a 'Pagina extrato' com: Page<movimentacoes\> (Data, valor, tipo e operador), Saldo atual e somatório das movimentacoes no período filtrado.<br>
+Aceita os seguintes parâmetros de movimentacoes para filtro: `id`, `operador`, `dataInicio` e `dataFim`. <br>
+Como  parâmetros de filtros, aceita: `sort`, `size`, `page` e `direction`.<br/>
+<strong>Exemplo: localhost/api/extrato?id=1&size=50&operador=beltrano</strong>
 
-                   .\mvnw clean package  para windows.
-- Após isso execute o comando: 
+`/api/saldo`: Disponibiliza o saldo do usuario fornecido pelo parâmetro: `id`.
 
-                             java -jar <...caminhoParaSeuJar>
+`/api/usuario`: Disponibiliza algumas informações do usuário fornecido pelo parâmetro: `id`, como: Nome, Agencia e Conta corrente. Esse end-point facilita a aplicação front-end na construção dos menus.
 
-## Requisitos de sistema
 
-- Possuir a JDK 11 
-- Uma IDE ou editor de sua preferência
+## Testar as páginas web
 
-## Requisitos do Projeto
+Para testar as páginas web, basta digitar no navegador o endereco: `localhost`.<br>
+O usuário irá se deparar com a seguinte página de login da aplicação, construida em bootstrap, onde o usuário poderá se logar em qualquer um dos usuários que foram usados para popular o banco H2.
+![tela-login](docs\images\login.png)
 
-- A sua api deve fornecer os dados de transferência de acordo com o número da conta bacária.
-- Caso não seja informado nenhum filtro, retornar  todos os dados de transferência.
-- Caso seja informado um período de tempo, retornar todas as transferências relacionadas à aquele período de tempo.
-- Caso seja informado o nome do operador da transação, retornar todas as transferências relacionados à aquele operador.
-- Caso todos os filtros sejam informados, retornar todas as transferências com base no período de tempo informado e o nome do operador.
-- Operador de transação nada mais é que, o nome do responsável de destino da transação caso seja uma operação de transferência de saida ou o nome do responsável de onde se originou a transação caso seja uma operação de transferência de entrada.
-- Os valores devem ser de ponto flutuante, e deve-se considerar apenas duas casas decimais.
-- O frontend deve seguir como exemplo o protótipo informado no documento do processo seletivo.
-- No frontend o usuário deve ser capaz de informar um período de tem e/ou nome do operador da transasção como filtros para buscar as transações.
-- As transações devem ser exibidas junto com o saldo total e o saldo total no período de acordo com o protótipo do documento.
-
-## O que iremos avaliar
-- Cumprimento dos requisitos
-- Qualidade do projeto de API e fluidez da DX
-- Organização do código e boas práticas
-- Domínio das linguagens, bibliotecas e ferramentas utilizadas
-- Organização dos commits
-- Escrita e cobertura de testes
-
-## Sobre a entrega
-- Utilizar o padrão RESTFul para a construção da sua API.
-- Existe um script sql no pacote resources que cotém a modelagem do banco que pode ser seguida, e valores iniciais.
-- Caso julge necessário você poderá criar mais tablas, porém a estrutura inicial não deve ser alterada.
+Em seguida, o usuário terá acesso a uma pagina construida com Thymeleaf, que faz apenas requisições à API REST, permitindo o acesso as principais funcionalidades da aplicação.<br>
+A pagina é intuitiva e lhe uma representação visual de todas as requisições necessárias para se avaliar o extrato financeiro do usuário.
+![tela-extrato](docs\images\extrato.PNG)

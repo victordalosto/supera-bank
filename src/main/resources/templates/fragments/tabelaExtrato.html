@@ -1,0 +1,21 @@
+<div id="tabela-extrato" th:fragment="tabela-extrato">
+    <table class="table table-bordered mx-6">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Dados</th>
+                <th scope="col" class="text-center">Valentia</th>
+                <th scope="col" class="text-center">Tipo</th>
+                <th scope="col">Operador transacionado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="extrato: ${listaExtrato}">
+                <td class="text-center" th:text="${extrato.dataTransferencia}"></td>
+                <td class="text-center" th:text="${extrato.valor}"></td>
+                <td class="text-center" th:text="${extrato.tipo}"></td>
+                <td th:text="${extrato.operador}"></td>
+            </tr>
+  
+        </tbody>
+    </table>
+</div>

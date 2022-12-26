@@ -1,0 +1,25 @@
+Documento de Requisito elaborado.
+Titulo: Camada de serviço de emissão de extrato bancário.
+Autor: Victor Hugo Dalosto de Oliveira
+Versão: R00 (21/12/2022)
+
+@EPIC: COMO usuario regular do aplicativo do banco, QUERO visualizar o meu extrato bancário, PARA analisar minhas movimentações financeiras.
+  -STORYS: COMO usuario regular, QUERO:
+    -STORY#1: Visualizar toda movimentação monetária em minha conta, tenda sua data efetivada (dados), seu tipo, o seu valor (Valentia) e o nome do operador transacionado;
+    -STORY#2: Visualizar o saldo atual da minha conta;
+    -STORY#3: Visualizar o somatório das movimentações no período filtrado, tendo entrada (Credito - C), saida (Debito - D) e saldo com sinal de (+ e -);
+    -STORY#4: Ter uma funcionalidade de imprimir declaração, onde podemos imprimir em texto os resultados consolidados da minha consulta em JSON, podendo futuramente ser convertido em PDF;
+    -STORY#5: Imprimir a busca tendo: "Declaração de movimentação bancária", "Data de hoje", "nome cpf e agencia", e os resultados da minha busca;
+    -STORY#6: Possuir um sistema busca baseada em filtros :
+      -STORY#6.1: Caso não seja informado nenhum filtro, retornar todos os dados de transferência;
+      -STORY#6.2: Possuir filtro de tempo, onde caso seja informado um período de tempo, retornar todas as transferências relacionadas à aquele período de tempo;
+      -STORY#6.3: Possuir filtro de operador, onde caso seja informado o nome do operador da transação, retornar todas as transferências relacionados à aquele operador.
+    -STORY#7: Apresentar os valores monetarios em ponto flutuante, considerando apenas duas casas decimais.
+
+
+@EPIC: COMO usuario regular do aplicativo do banco, QUERO ter acesso a algumas funcionalidades do banco.
+  -STORYS: COMO usuario regular, QUERO:
+    -STORY#8: Visualizar o meu avatar, meu nome, minha agencia e a conta corrente da minha conta bancária;
+    -STORY#9: Ter acesso ao menu a algumas das funcionalidades do banco, como voltar a pagina inicial;
+
+Obs: Operador de transação é o nome do responsável de destino da transação caso seja uma operação de transferência de saida ou o nome do responsável de onde se originou a transação caso seja uma operação de transferência de entrada.
