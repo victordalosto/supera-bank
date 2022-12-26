@@ -36,8 +36,8 @@ Como  parâmetros de filtros, aceita: `sort`, `size`, `page` e `direction`.<br/>
 
 Para testar as páginas web, basta digitar no navegador o endereco: `localhost`.<br>
 O usuário irá se deparar com a seguinte página de login da aplicação, construida em bootstrap, onde o usuário poderá se logar em qualquer um dos usuários que foram usados para popular o banco H2.
-![tela-login](docs\images\login.png)
+![tela-login](https://github.com/victordalosto/supera-bank/blob/main/docs/images/login.PNG?raw=true)
 
 Em seguida, o usuário terá acesso a uma pagina construida com Thymeleaf, que faz apenas requisições à API REST, permitindo o acesso as principais funcionalidades da aplicação.<br>
 A pagina é intuitiva e lhe uma representação visual de todas as requisições necessárias para se avaliar o extrato financeiro do usuário.
-![tela-extrato](docs\images\extrato.PNG)
+![tela-extrato](https://github.com/victordalosto/supera-bank/blob/main/docs/images/extrato.PNG?raw=true)
